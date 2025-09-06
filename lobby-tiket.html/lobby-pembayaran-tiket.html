@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lobi Pembayaran</title>
+</head>
+
+  <head>
+    <script src="pembayaran.js"></script>
+    <link rel="stylesheet" href="../pembayaran.css">
+</head>
+
+<body>
+  <h1 style="text-align:center; background:green; color:white; padding:15px;">Lobi Pembayaran</h1>
+ 
+
+    <!-- Data Pemesan -->
+    <div class="card">
+      <h2>Data Pemesan</h2>
+      <form id="paymentForm">
+        <label for="nama">Nama Lengkap:</label>
+        <input type="text" id="nama" name="nama" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Pilihan Destinasi -->
+        <label for="destinasi">Pilih Destinasi:</label>
+        <select id="destinasi" name="destinasi" required>
+          <option value="ngebel" data-harga="50000" data-deskripsi="Keliling telaga + Spot foto + Warung kuliner lokal" data-img="telaga.jpg">Telaga Ngebel - Rp 50.000</option>
+          <option value="Watu Semaur" data-harga="75000" data-deskripsi="Hutan Trembesi + Spot foto Instagramable" data-img="djawatan.jpg">Watu Semaur - Rp 75.000</option>
+          <option value="Pemandian Air Panas Tirta Husada" data-harga="100.000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Pemandian Air Panas Tirta Husada - Rp 100.000</option>
+          <option value="Gua Lowo Sampung" data-harga="75000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Air Terjun Jurang Gandul - Rp 80.000</option>
+          <option value="Gunung Wilis" data-harga="105000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Gunung Wilis - Rp 105.000</option>
+          <option value="Air Terjun Kokok" data-harga="20000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Air Terjun Kokok - Rp 20.000</option>
+          <option value="Air Terjun Coban Lawe" data-harga="85000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Air Terjun Coban Lawe - Rp 85.000</option>
+          <option value="Air Terjun Sunggah" data-harga="15000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Air Terjun Sunggah - Rp 15.000</option>
+          <option value="Mloko Sewu" data-harga="80000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Mloko Sewu - Rp 80.000</option>
+          <option value="Tumpak Pare" data-harga="25000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Tumpak Pare - Rp 25.000</option>
+          <option value="Gunung Beruk" data-harga="15000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Gunung Beruk - Rp 15.000</option>
+          <option value="Bukit Teletubbies" data-harga="20000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Bukit Teletubbies - Rp 20.000</option>
+          <option value="Puncak Pringginan" data-harga="25000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Puncak Pringginan - Rp 25.000</option>
+          <option value="Bukit Soeharto" data-harga="25000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Bukit Soeharto - Rp 25.000</option>
+          <option value="Kedung Gamping" data-harga="25000" data-deskripsi="Pendakian + Panorama pegunungan salju" data-img="jayawijaya.jpg">Kedung Gamping - Rp 25.000</option>
+          
+        </select>
+
+        <!-- Kategori Tiket -->
+        <label for="kategori">Kategori Tiket:</label>
+        <select id="kategori" name="kategori" required>
+          <option value="Reguler" data-multiplier="1">Reguler</option>
+          <option value="VIP" data-multiplier="2">VIP (x2 harga)</option>
+          <option value="Keluarga" data-multiplier="3">Keluarga (x3 harga)</option>
+        </select>
+
+        <label for="kategori">Pilihan transportasi:</label>
+        <select id="kategori" name="kategori" required>
+          <option value="Tidak Ada" data-harga="000000">Tidak Ada</option>
+          <option value="Mobil" data-harga="600000">Sewa Mobil</option>
+          <option value="Hiase" data-harga="1000000">Sewa Hiase</option>
+          <option value="Buss" data-harga="2000000">Sewa Bus</option>
+        </select>
+
+        <label for="jumlah">Jumlah Tiket:</label>
+        <input type="number" id="jumlah" name="jumlah" min="1" value="1" required>
+
+        <label for="pembayaran">Metode Pembayaran:</label>
+        <select id="pembayaran" name="pembayaran" required>
+          <option value="Transfer Bank">Transfer Bank</option>
+          <option value="Dana/OVO/Gopay">Dana/OVO/Gopay</option>
+          <option value="Kartu Kredit">Kartu Kredit</option>
+        </select>
+
+        <button type="submit">Bayar Sekarang</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const destinasi = document.getElementById("destinasi");
+    const kategori = document.getElementById("kategori");
+    const jumlah = document.getElementById("jumlah");
+    const hargaEl = document.getElementById("harga");
+    const namaPaket = document.getElementById("namaPaket");
+    const deskripsi = document.getElementById("deskripsi");
+    const imgPaket = document.getElementById("imgPaket");
+
+    function updateRingkasan() {
+      const selectedDest = destinasi.selectedOptions[0];
+      const baseHarga = parseInt(selectedDest.getAttribute("data-harga"));
+      const desc = selectedDest.getAttribute("data-deskripsi");
+      const img = selectedDest.getAttribute("data-img");
+
+      const multiplier = parseInt(kategori.selectedOptions[0].getAttribute("data-multiplier"));
+      const qty = parseInt(jumlah.value);
+
+      const total = baseHarga * multiplier * qty;
+
+      namaPaket.textContent = "Paket Wisata " + selectedDest.textContent.split(" - ")[0];
+      deskripsi.textContent = desc;
+      imgPaket.src = img;
+      hargaEl.textContent = "Rp " + total.toLocaleString("id-ID");
+    }
+
+    destinasi.addEventListener("change", updateRingkasan);
+    kategori.addEventListener("change", updateRingkasan);
+    jumlah.addEventListener("input", updateRingkasan);
+
+    updateRingkasan(); // load pertama
+  </script>
+</body>
+</html>
